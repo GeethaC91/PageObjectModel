@@ -15,6 +15,7 @@ import org.testng.annotations.Test;
 import ui.framework.data.LoginProvider;
 import ui.framework.drivermanager.DriverManager;
 import ui.framework.listeners.ScreenshotListener;
+import ui.framework.pages.ContactSales;
 import ui.framework.pages.MenuPage;
 import ui.framework.pages.SignInPage;
 import ui.framework.report.HtmlReport;
@@ -70,7 +71,7 @@ public class ZoomHomeTest {
         Assert.assertEquals(atin.getText(),"Hello");
     }
 
-    @Test(dataProvider = "loginProvider", dataProviderClass = LoginProvider.class)
+    @Test(dataProvider = "loginProvider", dataProviderClass = LoginProvider.class,enabled=false)
     public void testPageObject(String user, String pass) throws InterruptedException {
         MenuPage menuPage = new MenuPage(driver);
         menuPage.clickMeetinLink();
@@ -79,6 +80,15 @@ public class ZoomHomeTest {
         Thread.sleep(5000);
         signInPage.clearForm();
         report.log(Status.PASS, "User Login Succeeded");
+    }
+
+    @Test
+    public void testPOM()
+    {
+        MenuPage menuPage = new MenuPage(driver);
+       // menuPage.clickMeetinLink();
+       ContactSales contactSales = menuPage.clickContactSales();
+       contactSales.sendKeys();
     }
 
     @Test(enabled = false)

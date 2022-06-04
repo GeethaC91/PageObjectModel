@@ -23,6 +23,9 @@ public class MenuPage {
     @FindBy(css = "#navbar .signin>a")
     private WebElement signIn;
 
+    @FindBy(xpath = "//a[@class='top-contactsales top-sales']")
+    private WebElement contactSales;
+
     public MenuPage(WebDriver driver) {
         this.driver = driver;
         PageFactory.initElements(driver,this);
@@ -38,5 +41,12 @@ public class MenuPage {
         this.signIn.click();
         return new SignInPage(driver);
     }
+
+    public ContactSales clickContactSales()
+    {
+        this.contactSales.click();
+        return new ContactSales(driver);
+    }
+
 
 }

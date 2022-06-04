@@ -31,7 +31,7 @@ public class Config {
     }
 
     public synchronized static String getProperties(String key) {
-        if(key == null || key.isEmpty() || key.isBlank()) {
+        if(key == null || key.isEmpty()) {
             logger.error("Keys can't be null or blank");
             throw new IllegalArgumentException("invalid key");
         }
